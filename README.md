@@ -339,97 +339,137 @@
     var superPower = new SuperPower();
     ```
 
-  - Use one `var` declaration for multiple variables and declare each variable on a newline.
+  - Use one `var` declaration for each variable unless you don't assign any values for them.
 
     ```javascript
     // bad
+    var items = getItems(),
+        goSportsTeam = true,
+        dragonball = 'z',
+        some,
+        value;
+
+    // good
     var items = getItems();
     var goSportsTeam = true;
     var dragonball = 'z';
-
-    // good
-    var items = getItems(),
-        goSportsTeam = true,
-        dragonball = 'z';
+    var some, value;
     ```
 
   - Declare unassigned variables last. This is helpful when later on you might need to assign a variable depending on one of the previous assigned variables.
 
     ```javascript
     // bad
-    var i, len, dragonball,
-        items = getItems(),
-        goSportsTeam = true;
+    var i, len, dragonball;
+    var items = getItems();
+    var goSportsTeam = true;
 
     // bad
-    var i, items = getItems(),
-        dragonball,
-        goSportsTeam = true,
-        len;
+    var i, items = getItems();
+    var dragonball;
+    var goSportsTeam = true;
+    var len;
 
     // good
-    var items = getItems(),
-        goSportsTeam = true,
-        dragonball,
-        length,
-        i;
+    var items = getItems();
+    var goSportsTeam = true;
+    var dragonball;
+    var length;
+    var i;
+
+    // better
+    var items = getItems();
+    var goSportsTeam = true;
+    var dragonball, length, i;
     ```
 
-  - Assign variables at the top of their scope. This helps avoid issues with variable declaration and assignment hoisting related issues.
+  - Group lines of code by it's relation separated by a single empty line:
 
     ```javascript
     // bad
     function() {
-      test();
+      test1();
+      test2();
       console.log('doing stuff..');
-
-      //..other stuff..
-
       var name = getName();
-
-      if (name === 'test') {
-        return false;
+      if (name !== 'test') {
+        return name;
       }
 
-      return name;
+      return false;
     }
 
     // good
     function() {
-      var name = getName();
+      test1();
+      test2();
 
-      test();
       console.log('doing stuff..');
 
-      //..other stuff..
+      var name = getName();
+      if (name !== 'test') {
+        return name;
+      }
 
-      if (name === 'test') {
+      return false;
+    }
+
+
+  - Assign variables when they are needed. This is helpful in order to add or delete a block of code. If a variable is used at many lines blocks is preferred to declare it at the top of the function.
+
+    ```javascript
+    // bad
+    function() {
+      var name;
+
+      if (!arguments.length) {
         return false;
       }
 
-      return name;
+      name = getName();
+
+      return true;
+    }
+
+    // good
+    function() {
+      if (!arguments.length) {
+        return false;
+      }
+
+      var name = getName();
+      return true;
     }
 
     // bad
     function() {
       var name = getName();
+      test();
+      console.log('doing stuff..');
 
-      if (!arguments.length) {
+      //..other stuff..
+
+      if (name === 'test') {
         return false;
       }
 
-      return true;
+      return name;
     }
 
     // good
     function() {
-      if (!arguments.length) {
-        return false;
-      }
+      test();
+      console.log('doing stuff..');
+
+      //..other stuff..
 
       var name = getName();
 
-      return true;
+      if (name === 'test') {
+        return false;
+      }
+
+      return name;
     }
     ```
 
@@ -673,7 +713,7 @@
 
 ## <a name='whitespace'>Whitespace</a>
 
-  - Use soft tabs set to 2 spaces
+  - Use hard tabs
 
     ```javascript
     // bad
@@ -683,12 +723,12 @@
 
     // bad
     function() {
-    ∙var name;
+    ∙∙var name;
     }
 
     // good
     function() {
-    ∙∙var name;
+    --->var name;
     }
     ```
   - Place 1 space before the leading brace.
@@ -772,14 +812,18 @@
 
     ```javascript
     // bad
-    var once
+    var array = [
+        once
       , upon
-      , aTime;
+      , aTime
+    ];
 
     // good
-    var once,
-        upon,
-        aTime;
+    var array = [
+      once,
+      upon,
+      aTime
+    ];
 
     // bad
     var hero = {
@@ -1156,12 +1200,12 @@
 ## <a name='modules'>Modules</a>
 
   - The module should start with a `!`. This ensures that if a malformed module forgets to include a final semicolon there aren't errors in production when the scripts get concatenated.
-  - The file should be named with camelCase, live in a folder with the same name, and match the name of the single export.
+  - The file should be named lowercase separated by underscore and match the name of the single export.
   - Add a method called noConflict() that sets the exported module to the previous version and returns this one.
   - Always declare `'use strict';` at the top of the module.
 
     ```javascript
-    // fancyInput/fancyInput.js
+    // fancy_input.js
 
     !function(global) {
       'use strict';
