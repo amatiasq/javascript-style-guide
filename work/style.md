@@ -49,6 +49,7 @@ On existing projects: project's consistency should be a priority over this docum
     1. [Lint](#lint)
     1. [jsHint](#jshint)
     1. [jsHint config files](#jshint-config)
+    1. [CVS Hooks](#cvs-hooks)
 
 
 ## <a name='types'>Types</a>
@@ -1285,3 +1286,20 @@ Usage:
   - A default `.jshint` configuration can be found [here](jshintrc.default.js)
 
   - You can give a look at a project's specific configuration [here](jshintrc.promotions.js) where custom rules were added to match existing code. Eventually some rules should be restored as code is refactored.
+
+  **[[⬆]](#TOC)**
+
+
+## <a name='cvs-hooks'>CVS Hooks</a>
+
+  Control version systems usually provide a interface to trigger specific programs before a commit to check it called hooks.
+
+  - SVN
+    - SVN hooks can be applied only at the main repository, so the hook will run on the repository environment. There are templates for hooks at `$REPO_DIR/hooks/`
+
+  - GIT
+    - Just create a `pre-commit` file at `.git/hooks` at your project's root folder. This script file will be executed before every commit and it will prevent the commit if the script return code is different of 0.
+
+  **[[⬆]](#TOC)**
+
+
