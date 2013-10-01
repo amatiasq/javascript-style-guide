@@ -7,10 +7,12 @@ This rules are the recommended and should be followed at any new project.
 On existing projects: project's consistency should be a priority over this document. Choose the style your team prefeers but you **ABSOLUTELY MUST** enforce consistency.
 
 > "Arguments over style are pointless. There should be a style guide, and you should follow it"
+>
 > Rebecca Murphey
 
 
 > "Part of being a good steward to a successful project is realizing that writing code for yourself is a Bad Idea™. If thousands of people are using your code, then write your code for maximum clarity, not your personal preference of how to get clever within the spec."
+>
 > Idan Gazit
 
 ## <a name='TOC'>Table of Contents</a>
