@@ -1240,7 +1240,9 @@ On existing projects: project's consistency should be a priority over this docum
 ## <a name='jshint'>jsHint</a>
 
   - jsHint was choosen as linter because it's flexibility
+
   - It runs on nodeJS
+
   - Plugins for many IDEs/editors
 
   - It allows per-file specific rules, can be defined creating a `//jshint` comment
@@ -1257,6 +1259,7 @@ On existing projects: project's consistency should be a priority over this docum
     ```
 
   - Every file-specific rule should be preceded by a comment explaining the reason of the rule modification
+  
   - It should be enforced to fix the file instead of adding a specific rule
 
 Usage:
@@ -1268,6 +1271,7 @@ Usage:
   - Sublime Text 2/3 plugin:
     - The plugin can be installed with [Package Control](https://sublime.wbond.net/installation), plugin name is `JSHint Gutter`
     - It requires `.jshintrc` file to be at your home directory
+    - The default command to lint the current file is `CTRL+SHIFT+J`
 
   **[[⬆]](#TOC)**
 
