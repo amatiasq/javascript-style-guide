@@ -17,6 +17,8 @@ On existing projects: project's consistency should be a priority over this docum
 
 ## <a name='TOC'>Table of Contents</a>
 
+  1. [Summary](#summary)
+
   1. Javascript Basics
     1. [Types](#types)
     1. [Properties](#properties)
@@ -52,6 +54,32 @@ On existing projects: project's consistency should be a priority over this docum
     1. [CVS Hooks](#cvs-hooks)
 
 
+## <a name='summary'>Summary</a>
+
+  - Lint your code
+  - Use tabs for identation
+  - Whitespace favors readability
+  - No trailing whitespace
+  - Use semicolons
+  - Max 120 characters per line
+  - Write small functions
+  - Use `===` and `!==` always, except for null `someValue != null`
+  - Descriptive variable names, no one-letter variables (except for iterators)
+  - Comment **why** the code does what it does, not **what** it does
+  - variableName, ConstructorName, propertyName, _privateVariable, CONSTANT
+  - **Never** nest ternary operators
+  - Declare one variable per `var` statement
+  - `{}` and `[]` instead of `new Object()` and `new Array()`
+  - Use extra commas at literal array and object declaration
+  - Single quote `'` preferred over double quote `"` whatever you choose **be consistent**
+  - Return early from functions
+  - Opening braces go on the same line
+  - Do not extend built in prototypes
+  - Do not create functions inside a if/for block
+
+**[[⬆]](#TOC)**
+
+
 ## <a name='types'>Types</a>
 
   - **Primitives**: When you access a primitive type you work directly on its value
@@ -85,7 +113,7 @@ On existing projects: project's consistency should be a priority over this docum
     console.log(foo[0], bar[0]); // => 9, 9
     ```
 
-    **[[⬆]](#TOC)**
+**[[⬆]](#TOC)**
 
 ## <a name='properties'>Properties</a>
 
@@ -119,7 +147,7 @@ On existing projects: project's consistency should be a priority over this docum
     var isJedi = getProp('jedi');
     ```
 
-    **[[⬆]](#TOC)**
+**[[⬆]](#TOC)**
 
 
 ## <a name='variables'>Variables</a>
@@ -209,7 +237,7 @@ On existing projects: project's consistency should be a priority over this docum
       return false;
     }
     ```
-    **[[⬆]](#TOC)**
+**[[⬆]](#TOC)**
 
 
 ## <a name='hoisting'>Hoisting</a>
@@ -299,7 +327,7 @@ On existing projects: project's consistency should be a priority over this docum
 
   - For more information refer to [JavaScript Scoping & Hoisting](http://www.adequatelygood.com/2010/2/JavaScript-Scoping-and-Hoisting) by [Ben Cherry](http://www.adequatelygood.com/)
 
-  **[[⬆]](#TOC)**
+**[[⬆]](#TOC)**
 
 
 ## <a name='objects'>Objects</a>
@@ -332,7 +360,7 @@ On existing projects: project's consistency should be a priority over this docum
     };
     ```
 
-  **[[⬆]](#TOC)**
+**[[⬆]](#TOC)**
 
 
 ## <a name='arrays'>Arrays</a>
@@ -375,7 +403,7 @@ On existing projects: project's consistency should be a priority over this docum
     itemsCopy = Array.prototype.slice.call(items);
     ```
 
-  **[[⬆]](#TOC)**
+**[[⬆]](#TOC)**
 
 
 ## <a name='strings'>Strings</a>
@@ -420,7 +448,7 @@ On existing projects: project's consistency should be a priority over this docum
       'fast.';
     ```
 
-  **[[⬆]](#TOC)**
+**[[⬆]](#TOC)**
 
 
 ## <a name='functions'>Functions</a>
@@ -467,7 +495,7 @@ On existing projects: project's consistency should be a priority over this docum
     }
     ```
 
-  **[[⬆]](#TOC)**
+**[[⬆]](#TOC)**
 
 
 ## <a name='variables'>Variables</a>
@@ -583,7 +611,7 @@ On existing projects: project's consistency should be a priority over this docum
     }
     ```
 
-  **[[⬆]](#TOC)**
+**[[⬆]](#TOC)**
 
 
 ## <a name='parentheses'>Parentheses</a>
@@ -600,7 +628,7 @@ On existing projects: project's consistency should be a priority over this docum
     if (typeof 0 !== 'number') throw new Error('WTF');
     ```
 
-  **[[⬆]](#TOC)**
+**[[⬆]](#TOC)**
 
 
 ## <a name='conditionals'>Conditional Expressions & Equality</a>
@@ -648,7 +676,7 @@ On existing projects: project's consistency should be a priority over this docum
 
   - For more information see [Truth Equality and JavaScript](http://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/#more-2108) by Angus Croll
 
-  **[[⬆]](#TOC)**
+**[[⬆]](#TOC)**
 
 ## <a name='blocks'>Blocks</a>
 
@@ -677,7 +705,7 @@ On existing projects: project's consistency should be a priority over this docum
     }
     ```
 
-  **[[⬆]](#TOC)**
+**[[⬆]](#TOC)**
 
 
 ## <a name='comments'>Comments</a>
@@ -744,7 +772,7 @@ On existing projects: project's consistency should be a priority over this docum
     }
     ```
 
-  **[[⬆]](#TOC)**
+**[[⬆]](#TOC)**
 
 
 ## <a name='whitespace'>Whitespace</a>
@@ -844,7 +872,7 @@ On existing projects: project's consistency should be a priority over this docum
 
     ```
 
-  **[[⬆]](#TOC)**
+**[[⬆]](#TOC)**
 
 
 ## <a name='leading-commas'>Leading Commas</a>
@@ -883,7 +911,7 @@ On existing projects: project's consistency should be a priority over this docum
     };
     ```
 
-  **[[⬆]](#TOC)**
+**[[⬆]](#TOC)**
 
 
 ## <a name='semicolons'>Semicolons</a>
@@ -910,7 +938,7 @@ On existing projects: project's consistency should be a priority over this docum
     })();
     ```
 
-  **[[⬆]](#TOC)**
+**[[⬆]](#TOC)**
 
 
 ## <a name='type-coercion'>Type Casting & Coercion</a>
@@ -982,7 +1010,7 @@ On existing projects: project's consistency should be a priority over this docum
     var hasAge = !!age;
     ```
 
-  **[[⬆]](#TOC)**
+**[[⬆]](#TOC)**
 
 
 ## <a name='naming-conventions'>Naming Conventions</a>
@@ -1096,7 +1124,7 @@ On existing projects: project's consistency should be a priority over this docum
     };
     ```
 
-  **[[⬆]](#TOC)**
+**[[⬆]](#TOC)**
 
 
 ## <a name='accessors'>Accessors</a>
@@ -1150,7 +1178,7 @@ On existing projects: project's consistency should be a priority over this docum
     };
     ```
 
-  **[[⬆]](#TOC)**
+**[[⬆]](#TOC)**
 
 
 ## <a name='constructors'>Constructors</a>
@@ -1200,7 +1228,7 @@ On existing projects: project's consistency should be a priority over this docum
     };
     ```
 
-  **[[⬆]](#TOC)**
+**[[⬆]](#TOC)**
 
 ## <a name='modules'>Modules</a>
 
@@ -1228,7 +1256,7 @@ On existing projects: project's consistency should be a priority over this docum
     }(this);
     ```
 
-  **[[⬆]](#TOC)**
+**[[⬆]](#TOC)**
 
 
 ## <a name='lint'>Lint</a>
@@ -1239,7 +1267,7 @@ On existing projects: project's consistency should be a priority over this docum
 
   - It's up to the developer to lint the code before commit it.
 
-  **[[⬆]](#TOC)**
+**[[⬆]](#TOC)**
 
 
 ## <a name='jshint'>jsHint</a>
@@ -1278,7 +1306,7 @@ Usage:
     - It requires `.jshintrc` file to be at your home directory
     - The default command to lint the current file is `CTRL+SHIFT+J`
 
-  **[[⬆]](#TOC)**
+**[[⬆]](#TOC)**
 
 
 ## <a name='jshint-config'>jsHint Configuration files</a>
@@ -1287,7 +1315,7 @@ Usage:
 
   - You can give a look at a project's specific configuration [here](jshintrc.promotions.js) where custom rules were added to match existing code. Eventually some rules should be restored as code is refactored.
 
-  **[[⬆]](#TOC)**
+**[[⬆]](#TOC)**
 
 
 ## <a name='cvs-hooks'>CVS Hooks</a>
@@ -1300,6 +1328,6 @@ Usage:
   - GIT
     - Just create a `pre-commit` file at `.git/hooks` at your project's root folder. This script file will be executed before every commit and it will prevent the commit if the script return code is different of 0.
 
-  **[[⬆]](#TOC)**
+**[[⬆]](#TOC)**
 
 
