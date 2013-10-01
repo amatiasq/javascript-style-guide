@@ -45,6 +45,10 @@ On existing projects: project's consistency should be a priority over this docum
   1. Angular specific
     1. [[Open to develop]]
 
+  1. Linting
+    1. [Lint](#lint)
+    1. [jsHint](#jshint)
+
 ## <a name='types'>Types</a>
 
   - **Primitives**: When you access a primitive type you work directly on its value
@@ -1222,3 +1226,49 @@ On existing projects: project's consistency should be a priority over this docum
     ```
 
   **[[⬆]](#TOC)**
+
+
+## <a name='lint'>Lint</a>
+
+  - Linters are tools than statically analyzes the code looking for consistency and bad patterns.
+  - It just flags suspicious code, it won't prevent the code to run.
+  - It's up to the developer to lint the code before commit it.
+
+  **[[⬆]](#TOC)**
+
+
+## <a name='jshint'>jsHint</a>
+
+  - jsHint was choosen as linter because it's flexibility
+  - It runs on nodeJS
+  - Plugins for many IDEs/editors
+
+  - It allows per-file specific rules, can be defined creating a `//jshint` comment
+
+    ```javascript
+    // Disable "undefined myModule" and "undefined $" warning, it's a global variable
+    /*globals myModule, $ */
+
+    // Disable unused variables warning and
+    //jshint unused:false
+
+    // Disable a concrete warning (code provided by "jshint --verbose project/js")
+    //jshint -W001
+    ```
+
+  - Every file-specific rule should be preceded by a comment explaining the reason of the rule modification
+  - It should be enforced to fix the file instead of adding a specific rule
+
+Usage:
+
+  - Command line:
+    - If running by command line you should have a `.jshintrc` file at the working directory
+    - It needs one argument: the path to look for `.js` files (**WARN**: Fails silently if not provided)
+
+  - Sublime Text 2/3 plugin:
+    - The plugin can be installed with [Package Control](https://sublime.wbond.net/installation), plugin name is `JSHint Gutter`
+    - It requires `.jshintrc` file to be at your home directory
+
+  **[[⬆]](#TOC)**
+
+
