@@ -1231,7 +1231,9 @@ On existing projects: project's consistency should be a priority over this docum
 ## <a name='lint'>Lint</a>
 
   - Linters are tools than statically analyzes the code looking for consistency and bad patterns.
+
   - It just flags suspicious code, it won't prevent the code to run.
+  
   - It's up to the developer to lint the code before commit it.
 
   **[[⬆]](#TOC)**
@@ -1259,7 +1261,7 @@ On existing projects: project's consistency should be a priority over this docum
     ```
 
   - Every file-specific rule should be preceded by a comment explaining the reason of the rule modification
-  
+
   - It should be enforced to fix the file instead of adding a specific rule
 
 Usage:
