@@ -18,6 +18,7 @@
   1. [Comments](#comments)
   1. [Whitespace](#whitespace)
   1. [Leading Commas](#leading-commas)
+  1. [Trailing Commas](#trailing-commas)
   1. [Semicolons](#semicolons)
   1. [Type Casting & Coercion](#type-coercion)
   1. [Naming Conventions](#naming-conventions)
@@ -26,7 +27,6 @@
   1. [Modules](#modules)
   1. [jQuery](#jquery)
   1. [ES5 Compatibility](#es5)
-  1. [Testing](#testing)
   1. [Performance](#performance)
   1. [Resources](#resources)
   1. [In the Wild](#in-the-wild)
@@ -730,7 +730,7 @@
 
 ## <a name='whitespace'>Whitespace</a>
 
-  - Use hard tabs
+  - Use 2 spaces for identation
 
     ```javascript
     // bad
@@ -740,12 +740,12 @@
 
     // bad
     function() {
-    ∙∙var name;
+    --->var name;
     }
 
     // good
     function() {
-    --->var name;
+    ∙∙var name;
     }
     ```
   - Place 1 space before the leading brace.
@@ -775,22 +775,7 @@
     ```
   - Place an empty newline at the end of the file.
 
-    ```javascript
-    // bad
-    (function(global) {
-      // ...stuff...
-    })(this);
-    ```
-
-    ```javascript
-    // good
-    (function(global) {
-      // ...stuff...
-    })(this);
-
-    ```
-
-  - Use indentation when making long method chains.
+  - Use indentation when making long method chains with only one call per line
 
     ```javascript
     // bad
@@ -807,18 +792,19 @@
     // bad
     var leds = stage.selectAll('.led').data(data).enter().append("svg:svg").class('led', true)
         .attr('width',  (radius + margin) * 2).append("svg:g")
-        .attr("transform", "translate(" + (radius + margin) + "," + (radius + margin) + ")")
+        .attr('transform', 'translate(' + (radius + margin) + ',' + (radius + margin) + ')')
         .call(tron.led);
 
     // good
     var leds = stage.selectAll('.led')
-        .data(data)
-      .enter().append("svg:svg")
+      .data(data)
+      .enter()
+        .append('svg:svg')
         .class('led', true)
         .attr('width',  (radius + margin) * 2)
-      .append("svg:g")
-        .attr("transform", "translate(" + (radius + margin) + "," + (radius + margin) + ")")
-        .call(tron.led);
+        .append('svg:g')
+          .attr('transform', 'translate(' + (radius + margin) + ',' + (radius + margin) + ')')
+          .call(tron.led);
     ```
 
     **[[⬆]](#TOC)**
@@ -856,6 +842,50 @@
       lastName: 'Parr',
       heroName: 'Mr. Incredible',
       superPower: 'strength'
+    };
+    ```
+
+    **[[⬆]](#TOC)**
+
+## <a name='trailing-commas'>Trailing Commas</a>
+
+  - Enforced on multiline objects/arrays. This helps sorting elements.
+
+    ```javascript
+    // bad
+    var array = [
+      once,
+      upon,
+      aTime
+    ];
+
+    // good
+    var array = [ once ];
+
+    // good
+    var array = [
+      once,
+      upon,
+      aTime,
+    ];
+
+    // bad
+    var hero = {
+      firstName: 'Bob',
+      lastName: 'Parr',
+      heroName: 'Mr. Incredible',
+      superPower: 'strength'
+    };
+
+    // good
+    var hero = { firstName: 'Bob' };
+
+    // good
+    var hero = {
+      firstName: 'Bob',
+      lastName: 'Parr',
+      heroName: 'Mr. Incredible',
+      superPower: 'strength',
     };
     ```
 
@@ -928,7 +958,7 @@
     // bad
     var val = parseInt(inputValue);
 
-    // good
+    // bad
     var val = Number(inputValue);
 
     // good
@@ -951,7 +981,7 @@
     // bad
     var hasAge = new Boolean(age);
 
-    // good
+    // bad
     var hasAge = Boolean(age);
 
     // good
@@ -1019,7 +1049,7 @@
     });
     ```
 
-  - Use a leading underscore `_` when naming private properties
+  - Use a leading underscore `_` when naming private properties. This properties should be accessible only using `this.`, never from outside this object.
 
     ```javascript
     // bad
@@ -1030,7 +1060,7 @@
     this._firstName = 'Panda';
     ```
 
-  - When saving a reference to `this` use `_this`.
+  - When saving a reference to `this` use `self`.
 
     ```javascript
     // bad
@@ -1051,9 +1081,9 @@
 
     // good
     function() {
-      var _this = this;
+      var self = this;
       return function() {
-        console.log(_this);
+        console.log(self);
       };
     }
     ```
@@ -1315,19 +1345,6 @@
   - Refer to [Kangax](https://twitter.com/kangax/)'s ES5 [compatibility table](http://kangax.github.com/es5-compat-table/)
 
   **[[⬆]](#TOC)**
-
-
-## <a name='testing'>Testing</a>
-
-  - **Yup.**
-
-    ```javascript
-    function() {
-      return true;
-    }
-    ```
-
-    **[[⬆]](#TOC)**
 
 
 ## <a name='performance'>Performance</a>
