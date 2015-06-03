@@ -46,8 +46,8 @@
     + `undefined`
 
     ```javascript
-    var foo = 1,
-        bar = foo;
+    var foo = 1;
+    var bar = foo;
 
     bar = 9;
 
@@ -60,8 +60,8 @@
     + `function`
 
     ```javascript
-    var foo = [1, 2],
-        bar = foo;
+    var foo = [1, 2];
+    var bar = foo;
 
     bar[0] = 9;
 
@@ -82,21 +82,21 @@
     var item = {};
     ```
 
-  - Don't use [reserved words](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Reserved_Words) as keys.
+  - [Reserved words](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Reserved_Words) allowed as keys. Avoid using modifications like 'klass'.
 
     ```javascript
     // bad
     var superman = {
-      class: 'superhero',
-      default: { clark: 'kent' },
-      private: true
+      klass: 'superhero',
+      defaults: { clark: 'kent' },
+      hidden: true
     };
 
     // good
     var superman = {
-      klass: 'superhero',
-      defaults: { clark: 'kent' },
-      hidden: true
+      class: 'superhero',
+      default: { clark: 'kent' },
+      private: true
     };
     ```
     **[[⬆]](#TOC)**
@@ -118,7 +118,6 @@
     ```javascript
     var someStack = [];
 
-
     // bad
     someStack[someStack.length] = 'abracadabra';
 
@@ -129,17 +128,15 @@
   - When you need to copy an array use Array#slice. [jsPerf](http://jsperf.com/converting-arguments-to-an-array/7)
 
     ```javascript
-    var len = items.length,
-        itemsCopy = [],
-        i;
 
     // bad
-    for (i = 0; i < len; i++) {
+    var itemsCopy = [];
+    for (var i = 0; i < items.length; i++) {
       itemsCopy[i] = items[i];
     }
 
     // good
-    itemsCopy = Array.prototype.slice.call(items);
+    var itemsCopy = [].slice.call(items);
     ```
 
     **[[⬆]](#TOC)**
@@ -191,11 +188,7 @@
   - When programatically building up a string, use Array#join instead of string concatenation. Mostly for IE: [jsPerf](http://jsperf.com/string-vs-array-concat/2).
 
     ```javascript
-    var items,
-        messages,
-        length, i;
-
-    messages = [{
+    var messages = [{
         state: 'success',
         message: 'This one worked.'
     },{
@@ -206,13 +199,11 @@
         message: 'This one did not work.'
     }];
 
-    length = messages.length;
-
     // bad
     function inbox(messages) {
-      items = '<ul>';
+      var items = '<ul>';
 
-      for (i = 0; i < length; i++) {
+      for (var i = 0; i < messages.length; i++) {
         items += '<li>' + messages[i].message + '</li>';
       }
 
@@ -221,9 +212,9 @@
 
     // good
     function inbox(messages) {
-      items = [];
+      var items = [];
 
-      for (i = 0; i < length; i++) {
+      for (var i = 0; i < messages.length; i++) {
         items[i] = messages[i].message;
       }
 
@@ -236,9 +227,14 @@
 
 ## <a name='functions'>Functions</a>
 
-  - Function expressions:
+  - Functions:
 
     ```javascript
+    // function declaration
+    function myFunct() {
+      return true;
+    }
+
     // anonymous function expression
     var anonymous = function() {
       return true;
@@ -253,6 +249,25 @@
     (function() {
       console.log('Welcome to the Internet. Please follow me.');
     })();
+    ```
+
+  - Favor function declaration over function expression when possible.
+
+    ```javascript
+    // bad
+    var myFunction = function() {
+      // ...stuff...
+    };
+
+    // bad
+    var myFunction = function myFunction() {
+      // ...stuff...
+    };
+
+    // good
+    function myFunction() {
+      // ...stuff...
+    }
     ```
 
   - Never declare a function in a non-function block (if, while, etc). Assign the function to a variable instead. Browsers will allow you to do it, but they all interpret it differently, which is bad news bears.
@@ -289,6 +304,7 @@
     ```
 
     **[[⬆]](#TOC)**
+
 
 
 
@@ -413,6 +429,7 @@
 
       return false;
     }
+    ```
 
 
   - Assign variables when they are needed. This is helpful in order to add or delete a block of code. If a variable is used at many lines blocks is preferred to declare it at the top of the function.
@@ -1431,4 +1448,3 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 **[[⬆]](#TOC)**
 
 # };
-
